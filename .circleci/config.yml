@@ -33,7 +33,7 @@ jobs:
           command: echo [all] >> instances/inventory.txt
       - aws-cli/setup:
           aws-access-key-id: $AWS_ACCESS_KEY_ID
-          aws-region: us-east-1
+          aws-region: $US_EAST_1_REGION
           aws-secret-access-key: $AWS_SECRET_KEY
       - run:
           name: "query ec2 instances and append ip addresses to inventory file"
