@@ -39,7 +39,7 @@ jobs:
           name: "query ec2 instances and append ip addresses to inventory file"
           command: aws ec2 describe-instances --query 'Reservations[*].Instances[*].PublicIpAddress' --filters "Name = tag:Name,Values = play_server" --output text >> instances/inventory.txt
 
-  create_infrastructure: 
+  create-infrastructure: 
     docker:
       - image: amazon/aws-cli
     steps:
