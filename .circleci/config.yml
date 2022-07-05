@@ -71,8 +71,11 @@ jobs:
             apk add --update ansible 
       - run:
           name: Configure server
-          command: |
-            ansible-playbook -i inventory main-remote.yml
+          expect:
+            command: |
+              ansible-playbook -i inventory main-remote.yml
+            responses:
+              'Are you sure you want to continue connecting (yes/no)?':'yes'
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
