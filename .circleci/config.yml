@@ -80,4 +80,5 @@ workflows:
   create-playbook-files:
     jobs:
       #- create-inventory-file
-      - create-infrastructure
+      #- create-infrastructure
+      - configure-infrastructure
