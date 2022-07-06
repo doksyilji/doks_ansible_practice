@@ -69,7 +69,7 @@ jobs:
           command: |
             # install the dependencies needed for your playbook
             apk add --update ansible
-            apt install expect 
+            apk add expect 
       - run:
           name: Configure server
           command: |
