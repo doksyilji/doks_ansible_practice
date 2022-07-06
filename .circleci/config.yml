@@ -66,13 +66,9 @@ jobs:
               fingerprints: ["53:d6:66:21:ae:92:ca:dc:ff:a0:ea:1f:40:8c:07:94"] 
       - run:
           name: Install dependencies
-          expect:
-            command: apk add --update ansible 
-            responses:
-              'Are you sure you want to continue connecting (yes/no)?' : 'yes'
-          #command: |
-          #  # install the dependencies needed for your playbook
-          #  apk add --update ansible 
+          command: |
+            # install the dependencies needed for your playbook
+            yes | apk add --update ansible 
       - run:
           name: Configure server
           command: |
