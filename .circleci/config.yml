@@ -67,12 +67,12 @@ jobs:
       - run:
           name: Install dependencies
           expect:
-            command: 
+            command: apk add --update ansible 
               responses:
                 'Are you sure you want to continue connecting (yes/no)?' : 'yes'
-          command: |
-            # install the dependencies needed for your playbook
-            apk add --update ansible 
+          #command: |
+          #  # install the dependencies needed for your playbook
+          #  apk add --update ansible 
       - run:
           name: Configure server
           command: |
