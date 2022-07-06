@@ -72,6 +72,7 @@ jobs:
       - run:
           name: Configure server
           command: |
+            #!/usr/bin/expect -f
             ansible-playbook -i inventory main-remote.yml
             expect "Are you sure you want to continue connecting (yes/no)?"
             send -- "yes"
