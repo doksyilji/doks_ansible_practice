@@ -66,16 +66,17 @@ jobs:
               fingerprints: ["53:d6:66:21:ae:92:ca:dc:ff:a0:ea:1f:40:8c:07:94"] 
       - run:
           name: Install dependencies
+          expect:
+            command: 
+              responses:
+                'Are you sure you want to continue connecting (yes/no)?' : 'yes'
           command: |
             # install the dependencies needed for your playbook
             apk add --update ansible 
       - run:
           name: Configure server
-          expect:
-            command: |
-              ansible-playbook -i inventory main-remote.yml
-            responses:
-              'Are you sure you want to continue connecting (yes/no)?' : 'yes'
+          command: |
+            ansible-playbook -i inventory main-remote.yml
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
