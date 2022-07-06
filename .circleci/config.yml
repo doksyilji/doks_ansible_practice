@@ -68,11 +68,11 @@ jobs:
           name: Install dependencies
           command: |
             # install the dependencies needed for your playbook
-            (yes || true) | apk add --update ansible 
+            apk add --update ansible 
       - run:
           name: Configure server
           command: |
-            ansible-playbook -i inventory main-remote.yml
+            (yes || true) | ansible-playbook -i inventory main-remote.yml
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
