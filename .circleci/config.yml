@@ -73,9 +73,10 @@ jobs:
       - run:
           name: Configure server
           command: |
-            ansible-playbook -i inventory main-remote.yml
+            spawn ansible-playbook -i inventory main-remote.yml
             expect "Are you sure you want to continue connecting (yes/no)?\r"
             send -- "yes\r"
+            expect eof
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
