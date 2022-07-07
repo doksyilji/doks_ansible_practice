@@ -72,7 +72,7 @@ jobs:
       - run:
           name: disable host key checking
           command: |
-            export ANSIBLE_HOST_KEY_CHECKING=False
+            os.environ["ANSIBLE_HOST_KEY_CHECKING"] = "False"
       - run:
           name: Configure server
           command: |
