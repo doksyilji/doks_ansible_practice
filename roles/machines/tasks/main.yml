@@ -5,6 +5,9 @@
  - name: write [all] to inventory file
    shell: echo [all] > inventory
    register: all_in_inventory
+ - name: disable host checking
+   shell: echo "ansible_ssh_common_args='-o StrictHostKeyChecking=no'">> inventory
+   register: disable_hostkeychecking
  - name: get_remote_machine_ips
    shell: aws ec2 describe-instances --query 'Reservations[*].Instances[*].PublicIpAddress' --filters "Name = tag:Name,Values = play_server" --output text >> inventory
    register: machine_ips
