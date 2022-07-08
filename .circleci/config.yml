@@ -122,6 +122,10 @@ jobs:
       - image: amazon/aws-cli
     steps:
       - checkout
+      - aws-cli/setup:
+          aws-access-key-id: AWS_ACCESS_KEY_ID
+          aws-region: US_EAST_1_REGION
+          aws-secret-access-key: AWS_SECRET_ACCESS_KEY
       - run:
           name: Execute bucket.yml - Create Cloudformation Stack
           command: |
@@ -138,6 +142,10 @@ jobs:
       - image: amazon/aws-cli
     steps:
       - checkout
+      - aws-cli/setup:
+          aws-access-key-id: AWS_ACCESS_KEY_ID
+          aws-region: US_EAST_1_REGION
+          aws-secret-access-key: AWS_SECRET_ACCESS_KEY
       - run: yum install -y tar gzip
       - run:
           name: Fetch and save the old pipeline ID (bucket name) responsible for the last release.
@@ -157,6 +165,10 @@ jobs:
       - image: amazon/aws-cli
     steps:
       - checkout
+      - aws-cli/setup:
+          aws-access-key-id: AWS_ACCESS_KEY_ID
+          aws-region: US_EAST_1_REGION
+          aws-secret-access-key: AWS_SECRET_ACCESS_KEY
       - run:
           name: Execute cloudfront.yml
           command: |
@@ -171,6 +183,10 @@ jobs:
       - image: amazon/aws-cli
     steps:
       - checkout
+      - aws-cli/setup:
+          aws-access-key-id: AWS_ACCESS_KEY_ID
+          aws-region: US_EAST_1_REGION
+          aws-secret-access-key: AWS_SECRET_ACCESS_KEY
       - run: yum install -y tar gzip
       - attach_workspace:
           at: ~/
