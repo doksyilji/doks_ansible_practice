@@ -55,7 +55,7 @@ jobs:
       # Uncomment the line below if you want to fail the current step
       # - run: return 1
       #- destroy_environment
-  # Exercise: Config and Deployment
+  # Config and Deployment
   configure-infrastructure: 
     docker:
       - image: python:3.9-alpine
@@ -72,6 +72,24 @@ jobs:
       - run:
           name: Configure server
           command: ansible-playbook -i inventory main-remote.yml
+  
+  # Smoke Testing
+  smoke-test:
+    docker:
+      - image: alpine:latest
+    steps:
+      - run: apk add --update curl
+      - run:
+          name: smoke test
+          command: |
+            URL="https://blog.udacity.com/"
+            # Test if website exists
+            if curl -s --head ${URL} 
+            then
+              return 0
+            else
+              return 1
+            fi
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
@@ -80,4 +98,5 @@ workflows:
     jobs:
       #- create-inventory-file
       #- create-infrastructure
-      - configure-infrastructure
+      #- configure-infrastructure
+      - smoke-test
