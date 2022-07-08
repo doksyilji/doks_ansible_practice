@@ -101,6 +101,10 @@ jobs:
       - image: alpine:latest
     steps:
       - run: apk add --update curl
+      - aws-cli/setup:
+          aws-access-key-id: AWS_ACCESS_KEY_ID
+          aws-region: US_EAST_1_REGION
+          aws-secret-access-key: AWS_SECRET_ACCESS_KEY
       - run:
           name: smoke test
           command: |
