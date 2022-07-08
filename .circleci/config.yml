@@ -20,10 +20,6 @@ commands:
   # Exercise - Rollback
   destroy_environment:
     steps:
-      - aws-cli/setup:
-          aws-access-key-id: AWS_ACCESS_KEY_ID
-          aws-region: US_EAST_1_REGION
-          aws-secret-access-key: AWS_SECRET_ACCESS_KEY
       - run:
           name: Destroy environment
           # ${CIRCLE_WORKFLOW_ID} is a Built-in environment variable 
@@ -101,6 +97,10 @@ jobs:
     docker:
       - image: alpine:latest
     steps:
+      - aws-cli/setup:
+          aws-access-key-id: AWS_ACCESS_KEY_ID
+          aws-region: US_EAST_1_REGION
+          aws-secret-access-key: AWS_SECRET_ACCESS_KEY
       - run: apk add --update curl
       - run:
           name: smoke test
