@@ -5,7 +5,7 @@ version: 2.1
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 orbs:
-  aws-cli: circleci/aws-cli@3.1
+  aws-cli: circleci/aws-cli@2.0.3
   #aws-ecs: circleci/aws-ecs@2.0
 
 commands:
@@ -147,7 +147,6 @@ jobs:
             --exclude 'share/*' \
             --exclude 'pyenv.cfg/*' \
             --exclude '.git/*' \
-            --exclude '/root/*'
   # Exercise: Promote to Production - Job 2
   # Fetch and save the pipeline ID (bucket ID) responsible for the last release.
   get_last_deployment_id:
