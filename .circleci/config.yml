@@ -144,9 +144,10 @@ jobs:
             --exclude 'include/*' \
             --exclude 'lib/*' \
             --exclude 'lib64/*' \
-            --exclude 'share/*'
-            --exclude 'pyenv.cfg/*'
-            --exclude '.git/*'
+            --exclude 'share/*' \
+            --exclude 'pyenv.cfg/*' \
+            --exclude '.git/*' \
+            --exclude '/root/*'
   # Exercise: Promote to Production - Job 2
   # Fetch and save the pipeline ID (bucket ID) responsible for the last release.
   get_last_deployment_id:
