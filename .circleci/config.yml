@@ -134,7 +134,7 @@ jobs:
             --stack-name stack-create-bucket-${CIRCLE_WORKFLOW_ID:0:7} \
             --parameter-overrides MyBucketName="mybucket-${CIRCLE_WORKFLOW_ID:0:7}"
       # Uncomment the step below if you wish to upload all contents of the current directory to the S3 bucket
-      - run: aws s3 sync . s3://mybucket-${CIRCLE_WORKFLOW_ID:0:7} --delete --exclude 'bin/python' --exclude 'bin/python3' --exclude 'include/*' --exclude 'lib/*' --exclude 'lib64/*' --exclude 'share/*' --exclude 'pyenv.cfg/*' --exclude '.git/*'
+      - run: aws s3 sync . s3://mybucket-${CIRCLE_WORKFLOW_ID:0:7} --delete --exclude 'bin/*' --exclude '/bin/*' --exclude 'include/*' --exclude 'lib/*' --exclude 'lib64/*' --exclude 'share/*' --exclude 'pyenv.cfg/*' --exclude '.git/*' --exclude 'git/*' --exclude '.git'
   # Exercise: Promote to Production - Job 2
   # Fetch and save the pipeline ID (bucket ID) responsible for the last release.
   get_last_deployment_id:
